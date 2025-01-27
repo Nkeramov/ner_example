@@ -1,0 +1,25 @@
+body {
+    font-size: 1.8em;
+}
+
+#input_text, #output_text {
+    min-height: 250px;
+    min-width: 800px;
+    padding: 10px;
+    vertical-align: bottom;
+    text-align: left;
+    border: 1px solid #ff8c00;
+    line-height: 2;
+}
+
+.per {
+    background-color: lime;
+}
+
+.loc {
+    background-color: yellow;
+}
+
+.org {
+    background-color: magenta;
+}
