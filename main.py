@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 
 @app.route("/", methods=["GET", "POST"])
-def index():
+def index() -> str:
     original_text = ""
     text_with_ner = ""
     if request.method == "POST":
