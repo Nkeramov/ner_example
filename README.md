@@ -10,14 +10,32 @@ You can enter text and get text with tagged entities. Standart named entities ar
 
 The web server is based on Flask framework. By default the application will run on port 5000.
 
-## Setting up project
-
-Сreate a virtual environment, activate it and install dependencies from the requirements file.
-```bash
-        python -m venv .venv
-        source .venv/bin/activate           # for Linux and Mac
-        ./env/Scripts/activate              # for Windows
-        pip install -r requirements.txt
+## Setting up and running the project
+Clone repository:
+```bash 
+git clone https://github.com/Nkeramov/ner_example.git
 ```
-
-Run with command: `python3 main.py`
+Switch to repo directory
+```bash 
+cd ner_example
+```
+Сreate new virtual environment:
+```bash 
+python -m venv .venv 
+```
+If you are using Linux or Mac activate the virtual environment with the command:
+```bash 
+source .venv/bin/activate
+```
+or if you are using Windows use the command:
+```bash 
+./env/Scripts/activate
+```
+Install dependencies from the requirements file:
+```bash
+pip install -r requirements.txt
+```
+Run with command:
+```bash
+python3 main.py
+```
