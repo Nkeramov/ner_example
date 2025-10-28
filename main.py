@@ -2,6 +2,7 @@ import logging
 from markupsafe import escape
 from flask import Flask, render_template, request
 from natasha import Segmenter, NewsNERTagger, NewsEmbedding, MorphVocab, Doc
+from typing import List
 
 
 app = Flask(__name__)
@@ -44,14 +45,15 @@ def analyze_text(text: str) -> str:
     doc = Doc(text)
     doc.segment(segmenter)
     doc.tag_ner(ner_tagger)
-    return markup_ner_text(text, doc.spans)
+    return markup_ner_text(text, doc)
 
 
-def markup_ner_text(text: str, spans) -> str:
+def markup_ner_text(text: str, doc: Doc) -> str:
     """Marks up named entities in text with HTML tags"""
-    spans = sorted(spans, key=lambda x: x.start, reverse=True)
+    spans = doc.spans
+    spans_sorted = sorted(spans, key=lambda x: x.start, reverse=True)
     result_text = list(text)
-    for span in spans:
+    for span in spans_sorted:
         span.normalize(morph_vocab)
         if span.type in ["PER", "LOC", "ORG"]:
             start, stop = span.start, span.stop
