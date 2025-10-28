@@ -1,25 +1,53 @@
 body {
-    font-size: 1.8em;
+    margin: 0;
+
 }
 
-#input_text, #output_text {
+#source_text, #text_with_ner {
+    font-size: 1.2em;
+    font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
     min-height: 250px;
-    min-width: 800px;
     padding: 10px;
-    vertical-align: bottom;
     text-align: left;
+    vertical-align: bottom;
     border: 1px solid #ff8c00;
-    line-height: 2;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
-.per {
-    background-color: lime;
+#source_text {
+    width: 800px;
+    resize: vertical;
 }
 
-.loc {
-    background-color: yellow;
+#text_wth_ner {
+    width: 820px;
 }
 
-.org {
-    background-color: magenta;
+.legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
 }
+
+.legend p {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 1.2em;
+    font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.error { 
+    margin: 15px 0px; 
+    font-size: 1.2em;
+    font-style: italic;
+    background-color: #ff4b3b; 
+    font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.ner-per { background-color: #ffeb3b; }
+.ner-loc { background-color: #90caf9; }
+.ner-org { background-color: #a5d6a7; }
+.ner-per:hover, .ner-loc:hover, .ner-org:hover { opacity: 0.8; }

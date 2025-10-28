@@ -4,22 +4,35 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{{title}}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="static/css/normalize.css">
         <link rel="stylesheet" href="static/css/skeleton.css">
         <link rel="stylesheet" href="static/css/styles.css">
     </head>
     <body>
         <div style="width: 800px; margin: 0 auto">
 			<form method="POST">
-				<h5><label for="input_text">Source text:</label></h5>
-				<textarea id="input_text" name="text" placeholder="Input text...">{{ original }}</textarea><br>
-				<input class="button-primary" type="submit" value="Analyse" style="float:right"><br><br>
-				<h5><label for="output_text">Text with NERs:</label></h5>
-				<div id="output_text" name="output_text" readonly>{{ text_with_ner | safe }}</div>
+				<h5><label for="source_text">Source text:</label></h5>
+				<textarea id="source_text" name="source_text" placeholder="Input text...">{{ source_text }}</textarea>
+                <br>
+				<input class="button-primary" type="submit" value="Analyse" style="float:right">
+                <br>
+                <br>
+				<h5><label for="text_with_ner">Text with NERs:</label></h5>
+				<div id="text_with_ner" name="text_with_ner" readonly>{{ text_with_ner | safe }}</div>
 			</form>
-			<p><span class="per">PER</span> - names</p>
-			<p><span class="loc">LOC</span> - locations</p>
-			<p><span class="org">ORG</span> - organizations</p>
+            {% if error %}
+                <div class="error">{{ error }}</div>
+            {% endif %}
+            <div class="legend">
+                <p>
+                    <span class="ner-per">PER</span> - names
+                </p>
+                <p>
+                    <span class="ner-loc">LOC</span> - locations
+                </p>
+                <p>
+                    <span class="ner-org">ORG</span> - organizations
+                </p>
+            </div>
 		</div>
     </body>
 </html>
