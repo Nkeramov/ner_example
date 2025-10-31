@@ -7,12 +7,12 @@ from typing import List
 
 app = Flask(__name__)
 
-logger = logging.getLogger(__name__)
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s : %(levelname)s : %(funcName)s : %(lineno)s : %(message)s",
-    datefmt="%H:%M:%S"
+    datefmt="%Y-%m-%d %H:%M:%S"
 )
+logger = logging.getLogger(__name__)
 
 app.logger.handlers = logger.handlers
 app.logger.setLevel(logger.level)
