@@ -2,7 +2,6 @@ import logging
 from markupsafe import escape
 from flask import Flask, render_template, request
 from natasha import Segmenter, NewsNERTagger, NewsEmbedding, MorphVocab, Doc
-from typing import List
 
 
 app = Flask(__name__)
