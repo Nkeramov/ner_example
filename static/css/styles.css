@@ -1,53 +1,115 @@
-body {
-    margin: 0;
-
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px 0;
+    font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-#source_text, #text_with_ner {
-    font-size: 1.2em;
-    font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    min-height: 250px;
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.form-textarea, .ner-output {
+    width: 100%;
     padding: 10px;
-    text-align: left;
-    vertical-align: bottom;
     border: 1px solid #ff8c00;
-    white-space: pre-wrap;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    font-size: 1.2rem;
+    font-family: inherit;
+    white-space: pre-line;
     word-wrap: break-word;
 }
 
-#source_text {
-    width: 800px;
+.form-textarea {
     resize: vertical;
+    min-height: 250px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-#text_wth_ner {
-    width: 820px;
+.form-textarea:focus {
+    border: 2px solid #ff8c00;
+    outline: none;
+}
+
+.ner-output {
+    min-height: 100px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin: 1rem 0;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.0rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
 }
 
 .legend {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+    padding: 0 0.5rem;
+    margin-top: 1rem;
+    border-radius: 4px;
 }
 
-.legend p {
+.legend-items {
     display: flex;
-    gap: 20px;
     flex-wrap: wrap;
-    font-size: 1.2em;
-    font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    gap: 20px;
 }
 
-.error { 
-    margin: 15px 0px; 
-    font-size: 1.2em;
-    font-style: italic;
-    background-color: #ff4b3b; 
-    font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ner-marker {
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: black;
 }
 
 .ner-per { background-color: #ffeb3b; }
 .ner-loc { background-color: #90caf9; }
 .ner-org { background-color: #a5d6a7; }
 .ner-per:hover, .ner-loc:hover, .ner-org:hover { opacity: 0.8; }
+
+.alert {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.alert-error { 
+    background-color: #f8d7da; 
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-success { 
+    background-color: #d4edda; 
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}

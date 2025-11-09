@@ -1,38 +1,91 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="UTF-8">
         <title>{{title}}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="static/css/skeleton.css">
-        <link rel="stylesheet" href="static/css/styles.css">
+        <meta name="description" content="Named Entity Recognition analysis tool">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div style="width: 800px; margin: 0 auto">
-			<form method="POST">
-				<h5><label for="source_text">Source text:</label></h5>
-				<textarea id="source_text" name="source_text" placeholder="Input text...">{{ source_text }}</textarea>
-                <br>
-				<input class="button-primary" type="submit" value="Analyse" style="float:right">
-                <br>
-                <br>
-				<h5><label for="text_with_ner">Text with NERs:</label></h5>
-				<div id="text_with_ner" name="text_with_ner" readonly>{{ text_with_ner | safe }}</div>
-			</form>
-            {% if error %}
-                <div class="error">{{ error }}</div>
-            {% endif %}
-            <div class="legend">
-                <p>
-                    <span class="ner-per">PER</span> - names
-                </p>
-                <p>
-                    <span class="ner-loc">LOC</span> - locations
-                </p>
-                <p>
-                    <span class="ner-org">ORG</span> - organizations
-                </p>
-            </div>
-		</div>
+        <div class="container">
+            <header class="header">
+                <h1>{{ title }}</h1>
+            </header>
+            <main class="main-content">
+                <form method="POST" class="ner-form">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            <div class="messages">
+                                {% for category, message in messages %}
+                                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+
+                    <div class="form-group">
+                        <label for="source_text" class="form-label">Source text:</label>
+                        <textarea id="source_text" name="source_text" 
+                                  placeholder="Input text here..." 
+                                  class="form-textarea"
+                                  rows="6">{{ source_text or '' }}</textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            Analyse
+                        </button>
+                        {% if source_text %}
+                        <button type="button" class="btn btn-secondary" onclick="clearForm()">
+                            Clear
+                        </button>
+                        {% endif %}
+                    </div>
+
+                    {% if text_with_ner %}
+                    <div class="form-group">
+                        <label for="text_with_ner" class="form-label">Text with NERs:</label>
+                        <div id="text_with_ner" class="ner-output">
+                            {{ text_with_ner | safe }}
+                        </div>
+                    </div>
+                    {% endif %}
+                </form>
+
+                <section class="legend" aria-labelledby="legend-title">
+                    <h3 id="legend-title">Legend</h3>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <span class="ner-marker ner-per">PER</span>
+                            <span class="legend-text">Person names</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="ner-marker ner-loc">LOC</span>
+                            <span class="legend-text">Locations</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="ner-marker ner-org">ORG</span>
+                            <span class="legend-text">Organizations</span>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <script>
+            function clearForm() {
+                document.getElementById('source_text').value = '';
+                document.querySelector('.ner-output')?.remove();
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const sourceText = document.getElementById('source_text');
+                if (sourceText && !sourceText.value) {
+                    sourceText.focus();
+                }
+            });
+        </script>
     </body>
 </html>
