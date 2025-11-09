@@ -1,18 +1,29 @@
 [project]
-name = "ner_example"
-version = "1.0.0"
-description = "An example of a solution to the problem of recognizing named entities"
+name = "ner_analyzer"
+version = "0.1.0"
+description = "NER analyzing tool example on Flask and Natasha"
 authors = [
     {name = "Nizam Keramov", email = "keramov.nizam@gmail.com"},
 ]
 license = {text = "MIT"}
 readme = "README.md"
 requires-python = ">=3.11"
+dependencies = [
+    "numpy==2.3.4",
+    "Flask==3.1.2",
+    "click==8.3.0",
+    "Jinja2==3.1.6",
+    "natasha==1.6.0",
+    "Werkzeug==3.1.3",
+    "pymorphy2==0.9.1",
+    "MarkupSafe==3.0.3",
+    "setuptools==80.0.0",
+]
 keywords = [ 
     "python",
     "flask",
     "ner",
-    "natasha"
+    "natasha",
 ]
 classifiers = [
     "License :: OSI Approved :: MIT License",
@@ -22,17 +33,34 @@ classifiers = [
 ]
 
 [project.urls]
-Repository = "https://github.com/Nkeramov/ner_example"
-"Bug Tracker" = "https://github.com/Nkeramov/ner_example/issues"
+Repository = "https://github.com/Nkeramov/ner_analyzer"
+"Bug Tracker" = "https://github.com/Nkeramov/ner_analyzer/issues"
+
+[build-system]
+requires = ["setuptools>=78.1.0", "wheel>=0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+    "mypy==1.18.2",
+    "ruff==0.4.4",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+exclude = [
+    "static*",
+    "templates*",
+    "tests*",
+    "docs*",
+    "*.egg-info*",
+]
 
 [tool.mypy]
 python_version = "3.11"
 strict = true
-# already included in strict = true, but left for clarity
-# disallow_untyped_defs = true
-# check_untyped_defs = true  
-# warn_return_any = true
-# warn_unused_configs = true
 ignore_missing_imports = true
 warn_redundant_casts = true
 warn_unused_ignores = true
