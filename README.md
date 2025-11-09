@@ -1,4 +1,4 @@
-# Name Entity Recognition (NER) example
+# Name Entity Recognition (NER) analyzer
 
 ![Python](https://img.shields.io/badge/python-3.11-blue.svg)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
@@ -10,32 +10,41 @@ You can enter text and get text with tagged entities. Standart named entities ar
 
 The web server is based on Flask framework. By default the application will run on port 5000.
 
-## Setting up and running the project
+## Setting up and running the project 🚀
+
+### Prerequisites
 Clone repository:
 ```bash 
-git clone https://github.com/Nkeramov/ner_example.git
+git clone https://github.com/Nkeramov/ner_analyzer.git
 ```
-Switch to repo directory
+Switch to repo directory:
 ```bash 
-cd ner_example
+cd ner_analyzer
 ```
-Сreate new virtual environment:
+### Traditional method with venv and pip
+Create and activate virtual environment:
 ```bash 
 python -m venv .venv 
+source .venv/bin/activate       # Linux/Mac
+# or
+./env/Scripts/activate          # Windows
 ```
-If you are using Linux or Mac activate the virtual environment with the command:
-```bash 
-source .venv/bin/activate
-```
-or if you are using Windows use the command:
-```bash 
-./env/Scripts/activate
-```
-Install dependencies from the requirements file:
+Install dependencies and run:
 ```bash
 pip install -r requirements.txt
+python main.py
 ```
-Run with command:
+### Modern method with uv
+Install dependencies and create virtual environment automatically:
 ```bash
-python3 main.py
+uv sync
+```
+Run the project (virtual environment is handled automatically):
+```bash
+uv run python main.py
+```
+Or with explicit activation:
+```bash
+source .venv/bin/activate       # After uv sync
+python main.py
 ```
