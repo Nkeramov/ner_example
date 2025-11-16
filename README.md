@@ -27,7 +27,7 @@ Create and activate virtual environment:
 python -m venv .venv 
 source .venv/bin/activate       # Linux/Mac
 # or
-./env/Scripts/activate          # Windows
+./venv/Scripts/activate         # Windows
 ```
 Install dependencies and run:
 ```bash
