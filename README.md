@@ -48,3 +48,16 @@ Or with explicit activation:
 source .venv/bin/activate       # After uv sync
 python main.py
 ```
+
+## 🤝 Contributing
+
+If you want to contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push to your fork and create a pull request.
+
+## 📝 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
